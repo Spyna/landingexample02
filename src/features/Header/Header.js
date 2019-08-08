@@ -5,6 +5,7 @@ import NewsLetter from "./Newsletter";
 import PushNotifications from "./PushNotification/PushNotifications";
 import Promo from "./Promo";
 import { pushNotificationSupported } from "./PushNotification/pushNotificationManager";
+import AppDownload from "./AppDownload";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -26,19 +27,20 @@ const useStyles = makeStyles(theme => ({
     },
   },
   content: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
-  gridItem :{
-    display:'flex',
-    justifyContent: 'center'
-  }
+  gridItem: {
+    display: "flex",
+    justifyContent: "center",
+  },
 }));
 
 export default function Header() {
   const classes = useStyles();
   const canUsePushNotifications = pushNotificationSupported();
+
   return (
     <header className={classes.root}>
       <Grid container className={classes.content}>
@@ -50,9 +52,7 @@ export default function Header() {
         </Grid>
         <Grid item xs={12} md={3} className={classes.gridItem}>
           {canUsePushNotifications && <PushNotifications />}
-          {!canUsePushNotifications && (
-            <div style={{ background: "red" }}>"Scarica la nostra app!"</div>
-          )}
+          {!canUsePushNotifications && <AppDownload />}
         </Grid>
       </Grid>
     </header>

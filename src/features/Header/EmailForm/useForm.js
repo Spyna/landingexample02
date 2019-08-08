@@ -4,11 +4,12 @@ const useForm = (onSuccess, validate) => {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
       onSuccess();
     }
-  }, [errors]);
+  });
 
   const handleSubmit = event => {
     if (event) event.preventDefault();

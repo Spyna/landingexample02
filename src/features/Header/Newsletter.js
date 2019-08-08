@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     minHeight: 345,
     height: 345,
     padding: theme.spacing(1),
-    margin: theme.spacing(1)
+    margin: theme.spacing(1),
   },
   title: {
     fontSize: "1.1rem",
@@ -31,19 +31,19 @@ const useStyles = makeStyles(theme => ({
   p: {
     fontSize: ".8rem",
   },
-  content : {
+  content: {
     maxHeight: 285,
-    height:285
+    height: 285,
   },
   actions: {
     bottom: 0,
     paddingBottom: theme.spacing(2),
-    width:'100%'
+    width: "100%",
   },
-  button : {
+  button: {
     "&:hover": {
-        backgroundColor: "#35C37D"
-      }
+      backgroundColor: "#35C37D",
+    },
   },
   container: {
     display: "flex",
@@ -67,18 +67,29 @@ const useStyles = makeStyles(theme => ({
   fieldError: {
     margin: theme.spacing(0, 2),
   },
+  subscribtionConfirm: {
+    display: "inline-block",
+    background: "#35C37D",
+    color: "white",
+    textAlign: "center",
+    fontSize: "1.3rem",
+    borderRadius: 2,
+    padding: theme.spacing(0.5, 1),
+  },
 }));
 
 export default function SimpleCard() {
   const classes = useStyles();
 
+  const [subscribed, setSubscribed] = useState(false);
+
   const { values, errors, handleChange, handleSubmit } = useForm(
-    afterValidation,
+    doSubscription,
     validate
   );
 
-  function afterValidation() {
-    console.log("No errors, submit callback called!");
+  function doSubscription() {
+    setSubscribed(true);
   }
   return (
     <Card className={classes.card}>
@@ -137,15 +148,24 @@ export default function SimpleCard() {
           )}
         </CardContent>
         <CardActions className={classes.actions}>
-          <Button
-            variant="contained"
-            fullWidth
-            color="primary"
-            type="submit"
-            className={classes.button}
-          >
-            Subscribe
-          </Button>
+          {!subscribed ? (
+            <Button
+              variant="contained"
+              fullWidth
+              color="primary"
+              type="submit"
+              className={classes.button}
+            >
+              Subscribe
+            </Button>
+          ) : (
+            <span className={classes.subscribtionConfirm}>
+              <span role="img" aria-label="yes">
+                👍
+              </span>{" "}
+              You are now subscribed!
+            </span>
+          )}
         </CardActions>
       </form>
     </Card>
