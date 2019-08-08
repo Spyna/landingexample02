@@ -10,13 +10,11 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     display: "flex",
     justifyContent: "center",
-    margin: 20,
   },
-  searchbox: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
+  gridItem :{
+    display:'flex',
+    justifyContent: 'center',
+  }
 }));
 
 export default function Body() {
@@ -31,10 +29,10 @@ export default function Body() {
 
   return (
     <Grid container className={classes.root}>
-      <Grid component="main" item xs={12} md={12} className={classes.searchbox}>
+      <Grid component="main" item xs={12} md={12} className={classes.gridItem}>
         <Search onChange={whenSearchTermChanges} />
       </Grid>
-      <Grid component="section" item xs={12} md={12}>
+      <Grid component="section" item xs={12} md={12} className={classes.gridItem}>
         <ShopGallery
           title="SHOP WOMEN"
           items={data}
@@ -42,7 +40,7 @@ export default function Body() {
           error={hasError}
         />
       </Grid>
-      <Grid component="section" item xs={12} md={12}>
+      <Grid component="section" item xs={12} md={12} className={classes.gridItem}>
         <ShopGallery
           title="SHOP MEN"
           items={data}

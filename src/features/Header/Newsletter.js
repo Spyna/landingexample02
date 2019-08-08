@@ -20,6 +20,7 @@ const useStyles = makeStyles(theme => ({
     minHeight: 345,
     height: 345,
     padding: theme.spacing(1),
+    margin: theme.spacing(1)
   },
   title: {
     fontSize: "1.1rem",
@@ -30,9 +31,14 @@ const useStyles = makeStyles(theme => ({
   p: {
     fontSize: ".8rem",
   },
+  content : {
+    maxHeight: 285,
+    height:285
+  },
   actions: {
     bottom: 0,
     paddingBottom: theme.spacing(2),
+    width:'100%'
   },
   button : {
     "&:hover": {
@@ -82,7 +88,7 @@ export default function SimpleCard() {
         autoComplete="off"
         onSubmit={handleSubmit}
       >
-        <CardContent>
+        <CardContent className={classes.content}>
           <Typography className={classes.title} variant="h2">
             Newsletter
           </Typography>

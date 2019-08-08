@@ -26,6 +26,10 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     padding: theme.spacing(4),
     backgroundColor: "#999",
+    "@media (min-width: 320px) and (max-width: 480px) ": {
+      width: 312,
+      height: 312,
+    }
   },
   galleryItemTitle: {
     color: "black",
@@ -60,7 +64,7 @@ function ShopGallery({ title, items, loading, error }) {
     loadedItems = getMockItems(title);
   }
   return (
-    <React.Fragment>
+    <div>
       <Typography
         component="h3"
         classes={{
@@ -92,7 +96,7 @@ function ShopGallery({ title, items, loading, error }) {
           ))}
         </Grid>
       )}
-    </React.Fragment>
+    </div>
   );
 }
 

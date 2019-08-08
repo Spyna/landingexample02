@@ -7,6 +7,7 @@ const useStyles = makeStyles(theme => ({
   container: {
     display: "flex",
     flexWrap: "wrap",
+    width: "100%",
   },
   textField: {
     marginLeft: theme.spacing(1),
@@ -17,15 +18,15 @@ const useStyles = makeStyles(theme => ({
 export default function SearchFilter({ onChange: performSearch }) {
   const classes = useStyles();
 
-const onSubmit = (event) => {
-  event.preventDefault();
-  const data = new FormData(event.target);
-  performSearch(data.get('query'));
-}
+  const onSubmit = event => {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    performSearch(data.get("query"));
+  };
 
-const whenInputChanges = (event) => {
-  performSearch(event.target.value)
-}
+  const whenInputChanges = event => {
+    performSearch(event.target.value);
+  };
 
   return (
     <Grid item sm={12} md={6}>
