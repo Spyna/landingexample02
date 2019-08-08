@@ -26,9 +26,11 @@ Non è gestito in maniera ottimale, a livello di UIX, quando l'utente decide di 
 
 ## Issues
 
-[] I box di *Newsletter* e *Push Notifications* nella versione mobile non sono raggruppati in tab, ma sono uno sotto l'altro.
-[] Le notifiche non funzionano bene da mobile, perchè non vengono visualizzate.
-[] Nella versione mobile con schermo "landscape" si spacca l'header.
+- [ ] I box di *Newsletter* e *Push Notifications* nella versione mobile non sono raggruppati in tab, ma sono uno sotto l'altro.
+
+- [ ] Le notifiche non funzionano bene da mobile, perchè non vengono visualizzate.
+
+- [ ] Nella versione mobile con schermo "landscape" si spacca l'header.
 
 ## Test
 
