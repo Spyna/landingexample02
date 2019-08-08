@@ -12,38 +12,52 @@ const randomIamges = [
   "https://via.placeholder.com/1024/6611bb",
 ];
 
-function sendNotification() {
+const TAG = "new-product";
+
+let serviceWorker;
+
+async function sendNotification() {
   // granted, default, denied
-  var img = randomIamges[Math.round(Math.random() * randomIamges.length)];
-  var text = "HEY! Take a look at this brand new shit!";
-  var notification = new Notification("New Product Available", {
+  const img = randomIamges[Math.round(Math.random() * randomIamges.length)];
+  const text = "HEY! Take a look at this brand new shit!";
+  const title = "New Product Available";
+  const options = {
     body: text,
-    icon: img,
-  });
-  notification.onclick = function(event) {
-    console.log(event.target);
-    window.open(event.target.icon, "_blank");
+    icon: "/favicon.ico",
+    vibrate: [200, 100, 200],
+    tag: TAG,
+    image: img,
+    badge: "/favicon.ico",
+    actions: [{ action: "Detail", title: "View", icon: "/favicon.ico" }],
   };
-  setTimeout(notification.close.bind(notification), 8000);
+  await serviceWorker.showNotification(title, options);
 }
 
-function enableNotifications() {
+function enableNotifications(registeredServiceWorker) {
+  serviceWorker = registeredServiceWorker;
   const debugDiv = document.createElement("div");
   debugDiv.id = "push-notification-debug";
   debugDiv.innerHTML = "send me a notification";
   debugDiv.addEventListener("click", sendNotification);
   document.body.appendChild(debugDiv);
+
+  registeredServiceWorker.addEventListener('message', event => {
+    console.log(event.data.msg, event.data.url);
+  });
+
+
 }
 
+
+
+
 function enablePushNotification() {
-  return Notification.requestPermission().then(result => {
-    console.log(result);
-    switch (result) {
-      case "granted":
-        enableNotifications();
-        return true;
-      default:
-        return false;
+  navigator.serviceWorker.register("/sw.js");
+  Notification.requestPermission(function(result) {
+    if (result === "granted") {
+      navigator.serviceWorker.ready.then(function(serviceWorker) {
+        enableNotifications(serviceWorker);
+      });
     }
   });
 }
