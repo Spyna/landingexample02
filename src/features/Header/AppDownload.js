@@ -66,12 +66,7 @@ export default function SimpleCard() {
           instant updates on sales, exclusive promotions and limited offers.
         </Typography>
         <div className={classes.imageContainer}>
-          <img
-            width="125"
-            height="120"
-            src={qrCode}
-            alt="App QR Code"
-          />
+          <img width="125" height="120" src={qrCode} alt="App QR Code" />
         </div>
       </CardContent>
       <CardActions className={classes.actions}>

@@ -9,10 +9,10 @@ import Box from "@material-ui/core/Box";
 import Icon from "../../components/Icon";
 import mailIcon from "./ico-mail.svg";
 import notificationIcon from "./ico-notification.svg";
-import NewsLetter from './Newsletter'
+import NewsLetter from "./Newsletter";
 
-const NotificationIcon =()=> <Icon image={notificationIcon} />;
-const NewsLetterIcon =()=><Icon image={mailIcon} />;
+const NotificationIcon = () => <Icon image={notificationIcon} />;
+const NewsLetterIcon = () => <Icon image={mailIcon} />;
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -47,11 +47,11 @@ function a11yProps(index) {
 const useStyles = makeStyles(theme => ({
   root: {
     // flexGrow: 1,
-    display:'none',
+    display: "none",
     "@media (min-width: 320px) and (max-width: 480px) ": {
-      display:'block'
+      display: "block",
     },
-    width: '100%',
+    width: "100%",
     // backgroundColor: theme.palette.background.paper,
   },
 }));
@@ -109,7 +109,7 @@ export default function ScrollableTabsButtonForce() {
         </AntTabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-      <NewsLetter />
+        <NewsLetter />
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two

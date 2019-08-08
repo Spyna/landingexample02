@@ -7,11 +7,11 @@ const cardStyle = makeStyles(theme => ({
     minHeight: 345,
     height: 345,
     padding: theme.spacing(1),
-    margin: theme.spacing(1)
+    margin: theme.spacing(1),
   },
-  content : {
+  content: {
     maxHeight: 285,
-    height:285
+    height: 285,
   },
   title: {
     fontSize: "1.1rem",
@@ -26,11 +26,11 @@ const cardStyle = makeStyles(theme => ({
     bottom: 0,
     paddingBottom: theme.spacing(2),
   },
-  button : {
+  button: {
     "&:hover": {
-        backgroundColor: "#35C37D"
-      }
-  }
+      backgroundColor: "#35C37D",
+    },
+  },
 }));
 
 export default cardStyle;

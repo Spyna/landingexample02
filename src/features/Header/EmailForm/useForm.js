@@ -4,7 +4,7 @@ const useForm = (onSuccess, validate) => {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
       onSuccess();
@@ -18,11 +18,11 @@ const useForm = (onSuccess, validate) => {
   };
 
   const handleChange = event => {
-      delete errors[event.target.name];
+    delete errors[event.target.name];
     event.persist();
     let value = event.target.value;
-    if(event.target.type==='checkbox'){
-        value = event.target.checked
+    if (event.target.type === "checkbox") {
+      value = event.target.checked;
     }
     setValues(values => ({
       ...values,

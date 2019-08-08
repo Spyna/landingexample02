@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     "@media (min-width: 320px) and (max-width: 480px) ": {
       width: 312,
       height: 312,
-    }
+    },
   },
   galleryItemTitle: {
     color: "black",
