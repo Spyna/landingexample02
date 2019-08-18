@@ -23,11 +23,11 @@ async function sendNotification() {
   const title = "New Product Available";
   const options = {
     body: text,
-    icon: "/favicon.ico",
+    icon: "https://via.placeholder.com/36/ffff00",
     vibrate: [200, 100, 200],
     tag: TAG,
     image: img,
-    badge: "/favicon.ico",
+    badge: "https://via.placeholder.com/128/00ff00",
     actions: [{ action: "Detail", title: "View", icon: "/favicon.ico" }],
   };
   await serviceWorker.showNotification(title, options);
